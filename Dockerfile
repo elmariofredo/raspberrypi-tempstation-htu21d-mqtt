@@ -9,7 +9,8 @@ RUN cd Adafruit_Python_HTU21D-1.0.0 && python3 setup.py install
 
 FROM arm32v7/python:3.7-slim
 
-COPY --from=builder /usr/local/lib/python3.7/site-packages/Adafruit_HTU21D-1.0.0-py3.7.egg /usr/local/lib/python3.7/site-packages/Adafruit_HTU21D-1.0.0-py3.7.egg
+COPY --from=builder /usr/local/lib/python3.7/site-packages/Adafruit_HTU21D-1.0.0-py3.7.egg /tmp/Adafruit_HTU21D-1.0.0-py3.7.egg
+RUN easy_install /tmp/Adafruit_HTU21D-1.0.0-py3.7.egg
 
 RUN pip3 install paho-mqtt
 

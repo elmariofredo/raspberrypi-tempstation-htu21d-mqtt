@@ -8,7 +8,7 @@ from Adafruit_HTU21D.HTU21D import HTU21D
 
 broker = os.environ["TEMP_BROKER_ADDRESS"]
 room_name = os.environ["TEMP_ROOM_NAME"]
-delay = os.environ["TEMP_BROKER_DELAY"] or 5
+delay = int(os.environ["TEMP_BROKER_DELAY"])
 
 client = mqtt.Client()
 client.connect(broker)
