@@ -14,3 +14,5 @@ COPY --from=builder /usr/local/lib/python3.7/site-packages/Adafruit_HTU21D-1.0.0
 RUN pip3 install paho-mqtt
 
 COPY main.py /
+
+ENTRYPOINT [ "/main.py" ]
