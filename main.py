@@ -4,13 +4,16 @@ import os
 import time
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
-from Adafruit_HTU21D.HTU21D import HTU21D
+from adafruit_htu21d import HTU21D
 
 broker = os.environ["TEMP_BROKER_ADDRESS"]
+username = os.environ["TEMP_BROKER_USERNAME"]
+password = os.environ["TEMP_BROKER_PASSWORD"]
 room_name = os.environ["TEMP_ROOM_NAME"]
 delay = int(os.environ["TEMP_BROKER_DELAY"])
 
 client = mqtt.Client()
+client.username_pw_set("username", "password")
 client.connect(broker)
 client.loop_start()
 
@@ -35,4 +38,3 @@ while True:
         client.publish(room_name + '/humidity', humidity)
 
     time.sleep(delay)
-
